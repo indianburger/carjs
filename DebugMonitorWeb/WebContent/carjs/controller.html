@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script src='../carjs/jquery.js'></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Controller</title>
+</head>
+<body>
+
+<button id='stepnum' onclick="opener.$$executor.stepNum(document.getElementById('num_tf').value)">Step</button>: <input type='text' id='num_tf' value='1' /><br>
+<button id='stepall' onclick='opener.$$executor.stepAll()' >Run to end</button><br><br>
+Next step: <span id='stepinfo'></span><br>
+Step number <span id='next_i'></span>
+</body>
+<script>
+jQuery("#num_tf").keyup(function(event){
+	  if(event.keyCode == 13){
+	    jQuery("#stepnum").click();
+	  }
+	});
+</script>
+</html> 

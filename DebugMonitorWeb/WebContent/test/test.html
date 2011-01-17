@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script src='../carjs/jquery.js'></script>
+<script>
+function loaded(){
+	/*var old = XMLHttpRequest;
+	XMLHttpRequest = function(){
+		var temp = new old();
+		temp.$$ajax = true;
+		return temp;
+	}*/
+	/*var request = new XMLHttpRequest();
+	request.open("GET", "responder.jsp?name=bhavya", true);
+	request.onreadystatechange = updated;
+	request.send();*/
+	
+	$.get("responder.jsp", {name: "bhavya thyagarajan"}, updated)
+	function updated(){
+		if (typeof this.$$ajax !== undefined){
+			console.log('object has ajax property');
+		}
+		if (request.readyState === 4)
+			console.log("server says " + request.responseText);
+	}
+	
+}
+
+</script>
+</head>
+<body onload='loaded()'>
+Blah
+</body>
+</html>
