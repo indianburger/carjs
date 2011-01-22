@@ -24,6 +24,7 @@ function $$arrRemove(arr, index) {
 	}, true);
 	
 	
+	
 	jQuery.post('../carjs/delete_log.jsp');
 	$$counter = 0; 	//global counter for objects
 	$$map = []; 	//global map of objects which are used for logging parameters of functions
@@ -41,7 +42,23 @@ function $$arrRemove(arr, index) {
 		return $$oldSI(ptr, time);
 	}
 	
-	
+	/*var ctr = 0;
+	$$oldST(function(){
+		if (ctr++ == 10){
+			window.location='http://www.google.com';
+		}
+		else{
+			var i = 0;
+			for (;i < 10; i++){
+				var ev = document.createEvent("MouseEvent");
+				ev.initMouseEvent("mousemove", true, false, null,
+						0, 1453, 106, 164+i, 2, false, false, false, false, 0, null);
+				document.dispatchEvent(ev);		
+			}
+			//console.log('fired event' + ctr);
+			$$oldST(arguments.callee , 1000);
+		}
+	}, 1000);*/
 	$$currFunc = null;
 	$$currArgs = null;
 	$$currFuncTime = null;

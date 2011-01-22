@@ -6,7 +6,7 @@
 <script language="JavaScript" src='breakout1.js'></script> 
 </head> 
  
-<body onLoad="$$logEntry(this, '$$script$$');onLD();$$logExit('$$script$$');" onMouseMove='MouseMv(event);'> 
+<body onLoad="onLD()" onMouseMove='MouseMv(event);'> 
  
 <span id=info style='position:absolute'> 
 <pre> 
@@ -30,4 +30,8 @@ Time: <input type=text name=TM size=5 value=0>
  
  
 --></body> 
+
+<script>window.addEventListener("load", function(){
+		$$logExit("$$script$$");
+	}, true);</script>
 </html>

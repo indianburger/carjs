@@ -10,7 +10,7 @@
 <button id='stepnum' onclick="opener.$$executor.stepNum(document.getElementById('num_tf').value)">Step</button>: <input type='text' id='num_tf' value='1' /><br>
 <button id='stepall' onclick='opener.$$executor.stepAll()' >Run to end</button><br><br>
 Next step: <span id='stepinfo'></span><br>
-Step number <span id='next_i'></span>
+Step number: <span id='next_i'></span>&nbsp;(<span id='totalsteps'></span>)
 </body>
 <script>
 jQuery("#num_tf").keyup(function(event){

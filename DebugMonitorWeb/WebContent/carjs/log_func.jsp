@@ -25,6 +25,5 @@ System.out.println("func arrived. Time elapsed: " + (currentTime - startTime) /1
 File func = new File(Util.carjswebProps.getString("log_func_path"));
 File rand = new File(Util.carjswebProps.getString("log_rand_path"));
 long size = func.length() + rand.length();
-size = size/1000;
-System.out.println("Func + rand file size: " + size + "KB");
+System.out.println("Func + rand file size: " + size + " bytes");
 %>
