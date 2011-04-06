@@ -1,0 +1,24 @@
+There are two eclipse projects at the root level: JSCaptureReplay and DebugMonitorWeb. 
+TODO: extend README to non-eclipse dev environments.
+
+INSTALL and RUNNING:
+1. Install the JEE version of Eclipse or install JEE environment in your installed Eclipse.
+2. Import the two projects into eclipse using Import -> Existing projects into workspace.
+3. In DebugMonitorWeb -> props -> carjsweb.properties; replace the jscar_func.log and jscar_rand.log file paths to some writable location in your system.
+4. Make sure that src files in DebugMonitorWeb and JSCaptureReplay have compiled successfully.
+5. Install Tomcat (v6 was tested, but v5 or other java web servers should be ok) and add the server in eclipse (using eclipse's new -> server...). Add DebugMonitorWeb to the server projects.
+6. To test the installation: start the server. Go to http://localhost:8080/DebugMonitorWeb/tetris/tetris.html . Play the game for a while. Now check the jscar_func.log and jscar_rand.log; these files should have some data related to the execution. Now go to http://localhost:8080/DebugMonitorWeb/tetris/replay.html, and you should be able to replay the execution using the replay controller popup window.
+
+INSTRUMENTING NEW APPLICATION:
+JSCaptureReplay is the project that instruments a given javascript file. Use this class to instrument:
+org.gt.carjs.CarJSMain <input_file> <output_file> 
+
+Two more files contribute to the javascript instrumentation. DebugMonitorWeb -> WebContent -> carjs -> capture/replay.js. These two javascript files contain instrumentation irrespective of application.
+
+For instrumenting a new application:
+1. Take every script in the HTML page - say: S1: <script>...</script>, S2: <script src="blah.js"></script>. For S1, take the contents between the script tags and run it through CarJSMain to output S1*. For S2, run the file blah.js through CarJSMain -> S2*.
+2. Create 2 copies of the original HTML file, say capture.html and replay.html. In both capture.html and replay.html include carjs/util.js and then carjs/capture.js or carjs/replay.js respectively, before any other scripts. 
+3. S1 and S2 would have been at some specific places in the HTML page. Replace them with  S1* and S2*.
+4. In summary, you would have capture.html with util.js, capture.js and S1* and S2*. Replay.html would have util.js, replay.js, S1* and S2*. Look at the instrumented examples under DebugMonitorWeb/webcontent/application_name where application_name=tetris, wave, battleship and domtris.
+5. *IGNORE* the applications breakout, minesweeper and viz. TODO: remove them from git.
+
