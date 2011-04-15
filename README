@@ -19,6 +19,12 @@ For instrumenting a new application:
 1. Take every script in the HTML page - say: S1: <script>...</script>, S2: <script src="blah.js"></script>. For S1, take the contents between the script tags and run it through CarJSMain to output S1*. For S2, run the file blah.js through CarJSMain -> S2*.
 2. Create 2 copies of the original HTML file, say capture.html and replay.html. In both capture.html and replay.html include carjs/util.js and then carjs/capture.js or carjs/replay.js respectively, before any other scripts. 
 3. S1 and S2 would have been at some specific places in the HTML page. Replace them with  S1* and S2*.
-4. In summary, you would have capture.html with util.js, capture.js and S1* and S2*. Replay.html would have util.js, replay.js, S1* and S2*. Look at the instrumented examples under DebugMonitorWeb/webcontent/application_name where application_name=tetris, wave, battleship and domtris.
-5. *IGNORE* the applications breakout, minesweeper and viz. TODO: remove them from git.
+4. In capture.html and replay.html add this script at the very end. It should be the last piece of script on the page.
+Script:
+<script>window.addEventListener("load", function(){
+		$$logExit("$$script$$");
+	}, true);</script>
+See examples.
+5. In summary, you would have capture.html with util.js, capture.js and S1* and S2*. Replay.html would have util.js, replay.js, S1* and S2*. Both would have the small script at the end. Look at the instrumented examples under DebugMonitorWeb/webcontent/application_name where application_name=tetris, wave, battleship and domtris.
+6. *IGNORE* the applications breakout, minesweeper and viz. TODO: remove them from git.
 
